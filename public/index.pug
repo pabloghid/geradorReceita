@@ -1,0 +1,54 @@
+doctype html
+html(lang="pt-br")
+
+head
+    title Gerador de receitas
+    link(rel="stylesheet", type="text/css", href="style.css")
+
+
+body
+    div.container
+        h3.titulo Receitinhas hmmmmm
+        div.receita
+            div.receita-header
+                form(action='/randomReceita', method='POST')
+                    button(type='submit').random.btnRandom Receita aleatória
+                img#teste(src=imag, alt="")
+                ul
+                each ingrediente in ingredientes
+                    li #{ingrediente}
+                                
+            div.receita-body
+                h4#nameRecipe #{name}
+                button(onclick='showModal()') Instruções
+
+div#modalInstrucoes.modal
+  div.modal-content
+    span.close &times;
+    h2 Instruções
+    span #{instrucoes}
+    img(src=pais, alt="")
+
+script.
+    // Get the modal
+    var modal = document.getElementById("modalInstrucoes");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    function showModal() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    } 
